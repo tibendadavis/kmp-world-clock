@@ -1,4 +1,4 @@
-package com.example.composedemo
+package com.example.kmpworldclock
 
 import web.navigator.navigator
 

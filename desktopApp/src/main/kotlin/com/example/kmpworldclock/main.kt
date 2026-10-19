@@ -1,4 +1,4 @@
-package com.example.composedemo
+package com.example.kmpworldclock
 
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
@@ -17,7 +17,7 @@ fun main() = application {
     // Sets the title of the application window
     // and uses the window state initialized above
     Window(
-        title = "Local Time App",
+        title = "KMP World Clock",
         onCloseRequest = ::exitApplication,
         state = state,
         // Makes sure that the window is always on top

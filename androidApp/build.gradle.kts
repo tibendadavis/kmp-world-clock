@@ -20,11 +20,11 @@ dependencies {
 }
 
 android {
-    namespace = "com.example.composedemo"
+    namespace = "com.example.kmpworldclock"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.example.composedemo"
+        applicationId = "com.example.kmpworldclock"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1

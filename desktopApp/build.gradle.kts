@@ -17,11 +17,11 @@ dependencies {
 
 compose.desktop {
     application {
-        mainClass = "com.example.composedemo.MainKt"
+        mainClass = "com.example.kmpworldclock.MainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "com.example.composedemo"
+            packageName = "com.example.kmpworldclock"
             packageVersion = "1.0.0"
         }
     }

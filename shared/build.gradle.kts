@@ -33,7 +33,7 @@ kotlin {
     }
     
     android {
-       namespace = "com.example.composedemo.shared"
+       namespace = "com.example.kmpworldclock.shared"
        compileSdk = libs.versions.android.compileSdk.get().toInt()
        minSdk = libs.versions.android.minSdk.get().toInt()
     

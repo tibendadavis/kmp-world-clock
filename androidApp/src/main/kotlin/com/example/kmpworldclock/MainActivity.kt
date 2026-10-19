@@ -1,4 +1,4 @@
-package com.example.composedemo
+package com.example.kmpworldclock
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

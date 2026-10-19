@@ -1,4 +1,4 @@
-package com.example.composedemo
+package com.example.kmpworldclock
 
 class WasmPlatform: Platform {
     override val name: String = "Web with Kotlin/Wasm"

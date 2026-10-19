@@ -1,4 +1,4 @@
-package com.example.composedemo
+package com.example.kmpworldclock
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -31,12 +31,12 @@ import kotlinx.datetime.format
 import kotlinx.datetime.format.char
 import kotlinx.datetime.toLocalDateTime
 import org.jetbrains.compose.resources.Resource
-import composedemo.shared.generated.resources.Res
-import composedemo.shared.generated.resources.tz
-import composedemo.shared.generated.resources.ae
-import composedemo.shared.generated.resources.no
-import composedemo.shared.generated.resources.jp
-import composedemo.shared.generated.resources.gb
+import kmpworldclock.shared.generated.resources.Res
+import kmpworldclock.shared.generated.resources.tz
+import kmpworldclock.shared.generated.resources.ae
+import kmpworldclock.shared.generated.resources.no
+import kmpworldclock.shared.generated.resources.jp
+import kmpworldclock.shared.generated.resources.gb
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import kotlin.time.Clock

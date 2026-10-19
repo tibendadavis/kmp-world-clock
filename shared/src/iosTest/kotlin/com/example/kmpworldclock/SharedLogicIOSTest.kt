@@ -1,4 +1,4 @@
-package com.example.composedemo
+package com.example.kmpworldclock
 
 import kotlin.test.Test
 import kotlin.test.assertEquals

@@ -1,4 +1,4 @@
-rootProject.name = "ComposeDemo"
+rootProject.name = "KMPWorldClock"
 
 pluginManagement {
     repositories {
