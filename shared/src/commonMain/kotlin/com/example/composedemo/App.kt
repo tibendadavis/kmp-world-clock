@@ -1,11 +1,13 @@
 package com.example.composedemo
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -28,17 +30,26 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.format
 import kotlinx.datetime.format.char
 import kotlinx.datetime.toLocalDateTime
+import org.jetbrains.compose.resources.Resource
+import composedemo.shared.generated.resources.Res
+import composedemo.shared.generated.resources.tz
+import composedemo.shared.generated.resources.ae
+import composedemo.shared.generated.resources.no
+import composedemo.shared.generated.resources.jp
+import composedemo.shared.generated.resources.gb
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
 import kotlin.time.Clock
 
 
-data class Country(val name: String, val zone: TimeZone)
+data class Country(val name: String, val zone: TimeZone, val image: DrawableResource)
 
 val defaultCountries = listOf<Country>(
-    Country("Tanzania", TimeZone.of("Africa/Dar_es_Salaam")),
-    Country("United Kingdom", TimeZone.of("Europe/London")),
-    Country("Japan", TimeZone.of("Asia/Tokyo")),
-    Country("Dubai", TimeZone.of("Asia/Dubai")),
-    Country("Norway", TimeZone.of("Europe/Oslo"))
+    Country("Tanzania", TimeZone.of("Africa/Dar_es_Salaam"), Res.drawable.tz),
+    Country("United Kingdom", TimeZone.of("Europe/London"), Res.drawable.gb),
+    Country("Japan", TimeZone.of("Asia/Tokyo"), Res.drawable.jp),
+    Country("Dubai", TimeZone.of("Asia/Dubai"), Res.drawable.ae),
+    Country("Norway", TimeZone.of("Europe/Oslo"), Res.drawable.no)
 )
 
 fun currentTimeAt(location: String, zone: TimeZone): String {
@@ -75,8 +86,17 @@ fun App(countries: List<Country> = defaultCountries) {
             Row(modifier = Modifier.padding(start = 20.dp, top = 10.dp)) {
                 DropdownMenu(
                     expanded = showCountries, onDismissRequest = { showCountries = false }) {
-                    countries.forEach { (name, zone) ->
-                        DropdownMenuItem(text = { Text(name) }, onClick = {
+                    countries.forEach { (name, zone, image) ->
+                        DropdownMenuItem(text = {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Image(
+                                    painterResource(image),
+                                    modifier = Modifier.size(20.dp).padding(end = 10.dp),
+                                    contentDescription = "$name flag"
+                                )
+                                Text(name)
+                            }
+                        }, onClick = {
                             timeAtLocation = currentTimeAt(name, zone)
                             showCountries = false
                         }
