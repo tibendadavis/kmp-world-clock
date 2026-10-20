@@ -6,52 +6,35 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.kmpworldclock.model.Country
 import com.example.kmpworldclock.model.defaultCountries
 import com.example.kmpworldclock.ui.CountrySelector
 import com.example.kmpworldclock.ui.TimeDisplay
-import com.example.kmpworldclock.util.currentTimeAt
-import kotlinx.coroutines.delay
+import com.example.kmpworldclock.viewmodel.WorldClockViewModel
 
 @Composable
 @Preview
 fun App(countries: List<Country> = defaultCountries) {
 
     MaterialTheme {
-        var showCountries by remember { mutableStateOf(false) }
-        var selectedCountry by remember { mutableStateOf<Country?>(null) }
-        var currentTime by remember { mutableStateOf("Not set yet buddy!") }
-
-        LaunchedEffect(selectedCountry) {
-            val country = selectedCountry;
-            while (country != null) {
-                currentTime = currentTimeAt(country.name, country.zone)
-                delay(1000)
-            }
-        }
+        val viewModel = viewModel { WorldClockViewModel() }
 
         Column(modifier = Modifier.padding(20.dp).safeContentPadding().fillMaxSize()) {
             TimeDisplay(
-                text = currentTime,
+                text = viewModel.currentTime,
                 modifier = Modifier.align(Alignment.CenterHorizontally),
             )
             CountrySelector(
                 countries = countries,
                 modifier = Modifier.align(Alignment.CenterHorizontally),
-                expanded = showCountries,
-                onExpandedChange = { showCountries = it },
-                onCountrySelected = { country ->
-                    selectedCountry = country
-                },
+                expanded = viewModel.showCountries,
+                onExpandedChange = { viewModel.onExpandedChange(it) },
+                onCountrySelected = { viewModel.onCountrySelected(it)},
             )
         }
     }
