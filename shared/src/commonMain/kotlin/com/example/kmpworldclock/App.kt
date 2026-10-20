@@ -35,6 +35,7 @@ fun App(countries: List<Country> = defaultCountries) {
             )
             CountrySelector(
                 countries = countries,
+                modifier = Modifier.align(Alignment.CenterHorizontally),
                 expanded = showCountries,
                 onExpandedChange = { showCountries = it },
                 onCountrySelected = { country ->

@@ -31,7 +31,7 @@ fun CountrySelector(
                     DropdownMenuItem(text = {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Image(
-                                painterResource(country.image),
+                                painterResource(flagImage(country.flagCode)),
                                 modifier = Modifier.size(30.dp).padding(end = 10.dp),
                                 contentDescription = "${country.name} flag"
                             )
