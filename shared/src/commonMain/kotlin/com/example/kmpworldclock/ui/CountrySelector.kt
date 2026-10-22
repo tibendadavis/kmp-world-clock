@@ -45,6 +45,7 @@ fun CountrySelector(
             }
         }
         Button(
+            enabled = countries.isNotEmpty(),
             modifier = Modifier.align(Alignment.CenterHorizontally),
             onClick = { onExpandedChange(!expanded) }) {
             Text("Select Location")
