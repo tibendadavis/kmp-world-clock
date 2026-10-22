@@ -27,8 +27,9 @@ fun App(countries: List<Country> = defaultCountries) {
             LazyColumn(modifier = Modifier.weight(2f).fillMaxWidth()) {
                 items(viewModel.selectedCountries, key = { it.flagCode }) {
                     ClockCard(
-                        country = it,
+                        it,
                         now = viewModel.now,
+                        onRemove = { viewModel.onCountryRemoved(it) },
                         modifier = Modifier.fillMaxWidth(),
                     )
                 }

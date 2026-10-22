@@ -10,16 +10,17 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.time.Clock
 import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Instant
 
 class WorldClockViewModel : ViewModel() {
 
     var showCountries by mutableStateOf(false)
         private set
-
+    
     var selectedCountries by mutableStateOf<List<Country>>(emptyList())
         private set
 
-   var now by mutableStateOf(Clock.System.now())
+    var now by mutableStateOf<Instant>(Clock.System.now())
         private set
 
     init {
@@ -39,5 +40,9 @@ class WorldClockViewModel : ViewModel() {
         if (country !in selectedCountries) {
             selectedCountries = selectedCountries + country
         }
+    }
+
+    fun onCountryRemoved(country: Country) {
+        selectedCountries = selectedCountries - country
     }
 }
