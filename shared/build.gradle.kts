@@ -57,6 +57,7 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.compose.uiTooling)
+            implementation(libs.androidx.security.crypto)
         }
         commonMain.dependencies {
             implementation(libs.compose.runtime)
@@ -73,6 +74,9 @@ kotlin {
             implementation(libs.kotlin.test)
         }
         jsMain.dependencies {
+            implementation(libs.wrappers.browser)
+        }
+        wasmJsMain.dependencies {
             implementation(libs.wrappers.browser)
         }
     }
