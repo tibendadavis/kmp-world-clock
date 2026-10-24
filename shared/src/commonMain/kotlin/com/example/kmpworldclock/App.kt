@@ -1,5 +1,6 @@
 package com.example.kmpworldclock
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -9,7 +10,6 @@ import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items as gridItems
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -24,6 +24,7 @@ import com.example.kmpworldclock.model.defaultCountries
 import com.example.kmpworldclock.ui.ClockCard
 import com.example.kmpworldclock.ui.CountrySelector
 import com.example.kmpworldclock.viewmodel.WorldClockViewModel
+import androidx.compose.foundation.lazy.grid.items as gridItems
 
 @Composable
 @Preview
@@ -44,6 +45,8 @@ fun App(countries: List<Country> = defaultCountries) {
                         LazyVerticalGrid(
                             columns = GridCells.Adaptive(minSize = 280.dp),
                             modifier = Modifier.fillMaxSize(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            verticalArrangement = Arrangement.spacedBy(4.dp)
                         ) {
                             gridItems(viewModel.selectedCountries, key = { it.flagCode }) {
                                 ClockCard(
